@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono&display=swap');
+
+:root {
+    --bg-color: #050505;
+    --card-bg: rgba(20, 20, 20, 0.7);
+    --accent: #00f2ff;
+    --success: #00ff88;
+    --danger: #ff3e3e;
+    --text: #ffffff;
+    --text-dim: #a0a0a0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+h1 {
+    font-size: 1.5rem;
+    letter-spacing: -0.5px;
+    background: linear-gradient(90deg, #fff, var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.login-btn {
+    background: white;
+    color: black;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255,255,255,0.2);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+}
+
+.card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 16px;
+    padding: 1.5rem;
+    position: relative;
+}
+
+.price-display {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.current-price {
+    font-size: 4rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent);
+    text-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
+}
+
+.indicators {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+
+.indicator {
+    text-align: center;
+}
+
+.ind-label {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+}
+
+.ind-val {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.logs-panel {
+    height: 400px;
+    background: #000;
+    border-radius: 12px;
+    padding: 1rem;
+    overflow-y: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.log-entry {
+    margin-bottom: 0.5rem;
+    padding-left: 10px;
+    border-left: 2px solid var(--accent);
+}
+
+.log-time { color: var(--text-dim); margin-right: 10px; }
+.log-buy { color: var(--success); }
+.log-sell { color: var(--danger); }
+
+@media (max-width: 900px) {
+    .grid { grid-template-columns: 1fr; }
+}

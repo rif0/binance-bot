@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpha-Senior Bot | Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="dashboard">
+        <header>
+            <h1>ALPHA-SENIOR <span>BOT</span></h1>
+            <button id="loginBtn" class="login-btn">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/action/google.svg" width="20" alt="Google">
+                Acceder con Google
+            </button>
+            <div id="userProfile" style="display: none; align-items: center; gap: 10px;">
+                <span id="userName"></span>
+                <button id="logoutBtn"
+                    style="background: none; border: 1px solid #333; color: #777; padding: 5px 10px; border-radius: 4px; cursor: pointer;">Salir</button>
+            </div>
+        </header>
+
+        <main id="mainContent" style="opacity: 0.3; pointer-events: none;">
+            <div class="grid">
+                <section class="card">
+                    <div class="price-display">
+                        <div class="ind-label">BTC/USDT</div>
+                        <div id="currentPrice" class="current-price">0.00</div>
+                    </div>
+                    <div class="indicators">
+                        <div class="indicator">
+                            <div class="ind-label">EMA 7</div>
+                            <div id="ema7" class="ind-val">0.00</div>
+                        </div>
+                        <div class="indicator">
+                            <div class="ind-label">EMA 25</div>
+                            <div id="ema25" class="ind-val">0.00</div>
+                        </div>
+                        <div class="indicator">
+                            <div class="ind-label">RSI (14)</div>
+                            <div id="rsi" class="ind-val">50.0</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <div class="ind-label" style="margin-bottom: 1rem;">Estado del Bot</div>
+                    <div id="botStatus" style="font-size: 1.2rem; font-weight: 600; color: #aaa;">Monitoreando...</div>
+                    <hr style="margin: 1rem 0; border: 0; border-top: 1px solid #333;">
+                    <div class="ind-label">Operación Actual</div>
+                    <div id="currentTrade" style="margin-top: 0.5rem; color: #777;">Ninguna activa</div>
+                </section>
+
+                <section class="card" style="grid-column: 1 / -1;">
+                    <div class="ind-label" style="margin-bottom: 1rem;">Registro de Actividad (Tiempo Real)</div>
+                    <div id="logs" class="logs-panel">
+                        <div class="log-entry">Esperando actualización del bot...</div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
