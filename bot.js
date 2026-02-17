@@ -19,15 +19,27 @@ class TradingBot {
         this.isTrading = false;
         this.currentPosition = null;
 
-        // Inicializar Firebase Admin si se proporciona la ruta de la llave
+        // Inicializar Firebase Admin
         if (config.firebaseServiceAccount) {
-            const serviceAccount = require(config.firebaseServiceAccount);
-            admin.initializeApp({
-                credential: admin.credential.cert(serviceAccount),
-                databaseURL: config.firebaseDatabaseURL
-            });
-            this.db = admin.database();
-            console.log(chalk.green('Firebase Admin inicializado correctamente.'));
+            let serviceAccount;
+            try {
+                // Intentar cargar como JSON string (útil para despliegue sin archivos)
+                if (config.firebaseServiceAccount.startsWith('{')) {
+                    serviceAccount = JSON.parse(config.firebaseServiceAccount);
+                } else {
+                    // Cargar desde archivo
+                    serviceAccount = require(config.firebaseServiceAccount);
+                }
+
+                admin.initializeApp({
+                    credential: admin.credential.cert(serviceAccount),
+                    databaseURL: config.firebaseDatabaseURL
+                });
+                this.db = admin.database();
+                console.log(chalk.green('Firebase Admin inicializado correctamente.'));
+            } catch (error) {
+                console.error(chalk.red('Error al inicializar Firebase:'), error.message);
+            }
         }
     }
 
